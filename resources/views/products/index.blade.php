@@ -18,7 +18,15 @@
                 <p>{{ $product->description }}</p>
                 <a href="{{route('products.show',$product)}}">
                     Просмотреть
-                </a>
+                </a><br>
+                <a href="{{route('products.edit',$product)}}">
+                    Редактировать
+                </a><br>
+                <form action="{{ route('products.destroy',$product) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" value="Удалить">
+                </form>
             </div>
         @endforeach
     </div>
